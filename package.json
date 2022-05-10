@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/DennyNguyen123/log_nodejs_learn#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.5"
   },
   "devDependencies": {
     "morgan": "^1.10.0",
