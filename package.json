@@ -2,10 +2,13 @@
   "name": "blog-nodejs",
   "version": "1.0.0",
   "description": "nodejs learning",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
-    "start": "nodemon --inspect ./index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --inspect ./src/index.js",
+    "livereload": "nodemon --ignore public",
+    "watch": "node-sass --watch ./src/resources/scss --output ./src/public/css",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "all": "npm-run-all -p -r start watch"
   },
   "repository": {
     "type": "git",
@@ -14,7 +17,7 @@
   "keywords": [
     "nodejs"
   ],
-  "author": "denny",
+  "author": "Denny",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DennyNguyen123/log_nodejs_learn/issues"
@@ -22,10 +25,14 @@
   "homepage": "https://github.com/DennyNguyen123/log_nodejs_learn#readme",
   "dependencies": {
     "express": "^4.18.1",
-    "express-handlebars": "^6.0.5"
+    "express-handlebars": "^6.0.5",
+    "livereload": "^0.9.3"
   },
   "devDependencies": {
+    "connect-livereload": "^0.6.1",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.16"
+    "node-sass": "^7.0.1",
+    "nodemon": "^2.0.16",
+    "npm-run-all": "^4.1.5"
   }
 }
