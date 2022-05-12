@@ -1,12 +1,12 @@
 const path = require("path")
 const express = require('express')
 const morgan = require('morgan')
-const { engine } = require ('express-handlebars');
+const { engine } = require('express-handlebars');
 const liveReload = require("livereload")
 const connectLivereload = require("connect-livereload")
 
-const publicDirection = path.join(__dirname,'public');
-const port = 3000
+const publicDirection = path.join(__dirname, 'public');
+const port = process.env.PORT || 3000;
 
 // Live reload page when change code
 liveReloadServer = liveReload.createServer()
@@ -22,20 +22,21 @@ app.use(express.static(publicDirection))
 app.use(connectLivereload());
 
 app.use(express.urlencoded({
-  extended:true
+  extended: true
 }));
 app.use(express.json())
-// // Http logger
-// app.use(morgan("combined"))
+
+// Http logger
+app.use(morgan("combined"))
 
 
 //Template engine
 app.engine('hbs', engine({
-  extname:".hbs"
+  extname: ".hbs"
 }));
 app.set('view engine', 'hbs');
 // app.set('views', './views');
-app.set('views', path.join(__dirname,'resources\\views'));
+app.set('views', path.join(__dirname, 'resources\\views'));
 
 
 
