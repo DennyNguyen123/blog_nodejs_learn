@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const { engine } = require('express-handlebars');
 const liveReload = require("livereload")
 const connectLivereload = require("connect-livereload")
+const route = require("./routes")
 
 const publicDirection = path.join(__dirname, 'public');
 const port = process.env.PORT || 3000;
@@ -39,25 +40,9 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources\\views'));
 
 
+route(app)
 
-app.get('/', (req, res) => {
-  // console.log("Log")
-  res.render('home')
-});
 
-app.get('/news', (req, res) => {
-  res.render('news')
-});
-
-app.get('/search', (req, res) => {
-  res.render('search')
-});
-
-app.post('/search', (req, res) => {
-  console.log(req.params.q)
-  console.log(req.body)
-  res.send('1')
-});
 
 
 app.listen(port, () => {
